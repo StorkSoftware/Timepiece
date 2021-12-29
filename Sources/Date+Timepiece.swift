@@ -310,11 +310,6 @@ extension Date {
         return dateFormatter.string(from: self)
     }
 
-    @available(*, unavailable, renamed: "stringIn(dateStyle:timeStyle:)")
-    public func string(inDateStyle dateStyle: DateFormatter.Style, andTimeStyle timeStyle: DateFormatter.Style) -> String {
-        return string(using: dateStyle, timeStyle: timeStyle)
-    }
-
     /// Creates a new `String` instance representing the date of the receiver formatted in given date style.
     ///
     /// - parameter dateStyle: The date style.
