@@ -10,6 +10,9 @@ import Timepiece
 import XCTest
 
 class DateTests: XCTestCase {
+
+    let posixLocale = Locale(identifier: "en_US_POSIX")
+
     private var sample: Date {
         return Date(year: 2014, month: 8, day: 15, hour: 20, minute: 25, second: 43)
     }
@@ -198,17 +201,17 @@ class DateTests: XCTestCase {
     }
 
     func testStringInStyles() {
-        let sampleString = sample.stringIn(dateStyle: .short, timeStyle: .short)
+        let sampleString = sample.string(using: .short, timeStyle: .short, locale: posixLocale)
         XCTAssertEqual(sampleString, "8/15/14, 8:25 PM")
     }
 
     func testDateString() {
-        let sampleString = sample.dateString(in: .short)
+        let sampleString = sample.dateString(in: .short, locale: posixLocale)
         XCTAssertEqual(sampleString, "8/15/14")
     }
 
     func testTimeString() {
-        let sampleString = sample.timeString(in: .short)
+        let sampleString = sample.timeString(in: .short, locale: posixLocale)
         XCTAssertEqual(sampleString, "8:25 PM")
     }
 }

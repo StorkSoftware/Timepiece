@@ -301,8 +301,9 @@ extension Date {
     /// - parameter timeStyle: The time style.
     ///
     /// - returns: The created `String` instance.
-    public func stringIn(dateStyle: DateFormatter.Style, timeStyle: DateFormatter.Style) -> String {
+    public func string(using dateStyle: DateFormatter.Style, timeStyle: DateFormatter.Style, locale: Locale = .current) -> String {
         let dateFormatter = DateFormatter()
+        dateFormatter.locale = locale
         dateFormatter.dateStyle = dateStyle
         dateFormatter.timeStyle = timeStyle
 
@@ -311,7 +312,7 @@ extension Date {
 
     @available(*, unavailable, renamed: "stringIn(dateStyle:timeStyle:)")
     public func string(inDateStyle dateStyle: DateFormatter.Style, andTimeStyle timeStyle: DateFormatter.Style) -> String {
-        return stringIn(dateStyle: dateStyle, timeStyle: timeStyle)
+        return string(using: dateStyle, timeStyle: timeStyle)
     }
 
     /// Creates a new `String` instance representing the date of the receiver formatted in given date style.
@@ -319,8 +320,8 @@ extension Date {
     /// - parameter dateStyle: The date style.
     ///
     /// - returns: The created `String` instance.
-    public func dateString(in dateStyle: DateFormatter.Style) -> String {
-        return stringIn(dateStyle: dateStyle, timeStyle: .none)
+    public func dateString(in dateStyle: DateFormatter.Style, locale: Locale = .current) -> String {
+        return string(using: dateStyle, timeStyle: .none, locale: locale)
     }
 
     /// Creates a new `String` instance representing the time of the receiver formatted in given time style.
@@ -328,7 +329,7 @@ extension Date {
     /// - parameter timeStyle: The time style.
     ///
     /// - returns: The created `String` instance.
-    public func timeString(in timeStyle: DateFormatter.Style) -> String {
-        return stringIn(dateStyle: .none, timeStyle: timeStyle)
+    public func timeString(in timeStyle: DateFormatter.Style, locale: Locale = .current) -> String {
+        return string(using: .none, timeStyle: timeStyle, locale: locale)
     }
 }
