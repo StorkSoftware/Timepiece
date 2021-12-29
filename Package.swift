@@ -4,7 +4,7 @@ import PackageDescription
 let package = Package(
     name: "Timepiece",
     platforms: [
-        .macOS(.v10_10), .iOS(.v8), .tvOS(.v9), .watchOS(.v2)
+        .macOS(.v10_12), .iOS(.v15), .tvOS(.v15), .watchOS(.v8)
     ],
     products: [
         .library(name: "Timepiece", targets: ["Timepiece"]),
